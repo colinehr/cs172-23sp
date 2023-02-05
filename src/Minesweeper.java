@@ -6,7 +6,11 @@ public class Minesweeper {
         for (int i = 0; i < numMines; i++) {
             int row = StdRandom.uniformInt(8);
             int col = StdRandom.uniformInt(8);
-            mines[row][col] = true;
+            if (mines[row][col]) {
+                i--;
+            } else {
+                mines[row][col] = true;
+            }
         }
         return mines;
     }
