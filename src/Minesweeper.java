@@ -1,7 +1,6 @@
 public class Minesweeper {
 
-    public static void main(String[] args) {
-        // initialization
+    public static boolean[][] initMines() {
         int numMines = 10;
         boolean[][] mines = new boolean[8][8];
         for (int i = 0; i < numMines; i++) {
@@ -9,6 +8,11 @@ public class Minesweeper {
             int col = StdRandom.uniformInt(8);
             mines[row][col] = true;
         }
+        return mines;
+    }
+
+    public static void main(String[] args) {
+        boolean[][] mines = initMines();
     }
 
 }
