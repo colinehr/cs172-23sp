@@ -14,17 +14,14 @@ public class Minesweeper {
         return mines;
     }
 
-    public static void main(String[] args) {
-        boolean[][] mines = initMines(10);
-
-        StdDraw.setXscale(0, 8);
-        StdDraw.setYscale(0, 8);
-        // draw grid
+    public static void drawGrid() {
         for (int i = 1; i < 8; i++) {
             StdDraw.line(i, 0, i, 8);
             StdDraw.line(0, i, 8, i);
         }
-        // draw mines
+    }
+
+    public static void drawMines(boolean[][] mines) {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 if (mines[row][col]) {
@@ -32,6 +29,18 @@ public class Minesweeper {
                 }
             }
         }
+    }
+
+    public static void main(String[] args) {
+        boolean[][] mines = initMines(10);
+
+        StdDraw.setXscale(0, 8);
+        StdDraw.setYscale(0, 8);
+        StdDraw.enableDoubleBuffering();
+
+        drawGrid();
+        drawMines(mines);
+        StdDraw.show();
     }
 
 }
