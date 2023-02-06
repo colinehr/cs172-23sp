@@ -1,5 +1,22 @@
 public class Minesweeper {
 
+    public static void main(String[] args) {
+        boolean[][] mines = initMines(8, 8, 10);
+        boolean[][] revealed = new boolean[8][8];
+
+        StdDraw.setXscale(0, 8);
+        StdDraw.setYscale(0, 8);
+        StdDraw.enableDoubleBuffering();
+
+        drawGrid(8, 8);
+        drawGame(mines, revealed);
+
+        while (true) {
+            handleMouseClick(mines, revealed);
+            drawGame(mines, revealed);
+        }
+    }
+
     public static boolean[][] initMines(int width, int height, int numMines) {
         boolean[][] mines = new boolean[height][width];
         for (int i = 0; i < numMines; i++) {
@@ -23,26 +40,36 @@ public class Minesweeper {
         }
     }
 
-    public static void drawMines(boolean[][] mines) {
+    public static void drawGame(boolean[][] mines, boolean[][] revealed) {
+        drawGrid(mines.length, mines[0].length);
         for (int row = 0; row < mines.length; row++) {
             for (int col = 0; col < mines[0].length; col++) {
-                if (mines[row][col]) {
+                if (revealed[row][col] && mines[row][col]) {
                     StdDraw.filledCircle(col + 0.5, row + 0.5, 0.25);
+                } else if (revealed[row][col] && !mines[row][col]) {
+                    int neighbors = countNeighboringMines(mines, row, col);
+                    StdDraw.text(col + 0.5, row + 0.5, String.valueOf(neighbors));
                 }
             }
         }
+        StdDraw.show();
     }
 
-    public static void main(String[] args) {
-        boolean[][] mines = initMines(8, 8, 10);
+    public static void handleMouseClick(boolean[][] mines, boolean[][] revealed) {
+        if (!StdDraw.isMousePressed()) {
+            int x = (int) StdDraw.mouseX();
+            int y = (int) StdDraw.mouseY();
+            reveal(mines, revealed, x, y);
+        }
+    }
 
-        StdDraw.setXscale(0, 8);
-        StdDraw.setYscale(0, 8);
-        StdDraw.enableDoubleBuffering();
+    public static int countNeighboringMines(boolean[][] mines, int row, int col) {
+        // placeholder
+        return 0;
+    }
 
-        drawGrid(8, 8);
-        drawMines(mines);
-        StdDraw.show();
+    public static void reveal(boolean[][] mines, boolean[][] revealed, int row, int col) {
+        // placeholder
     }
 
 }
