@@ -56,10 +56,10 @@ public class Minesweeper {
     }
 
     public static void handleMouseClick(boolean[][] mines, boolean[][] revealed) {
-        if (!StdDraw.isMousePressed()) {
+        if (StdDraw.isMousePressed()) {
             int x = (int) StdDraw.mouseX();
             int y = (int) StdDraw.mouseY();
-            reveal(mines, revealed, x, y);
+            reveal(mines, revealed, y, x);
         }
     }
 
@@ -69,7 +69,7 @@ public class Minesweeper {
     }
 
     public static void reveal(boolean[][] mines, boolean[][] revealed, int row, int col) {
-        // placeholder
+        revealed[row][col] = true;
     }
 
 }
