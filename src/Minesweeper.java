@@ -64,8 +64,21 @@ public class Minesweeper {
     }
 
     public static int countNeighboringMines(boolean[][] mines, int row, int col) {
-        // placeholder
-        return 0;
+        int count = 0;
+        // ... calculate the count ...
+        int dRow = -1;
+        while (dRow <= 1) {
+            int dCol = -1;
+            while (dCol <= 1) {
+                // this doesn't work if it's on the edge
+                if (mines[row + dRow][col + dCol]) {
+                    count++;
+                }
+                dCol++;
+            }
+            dRow++;
+        }
+        return count;
     }
 
     public static void reveal(boolean[][] mines, boolean[][] revealed, int row, int col) {
