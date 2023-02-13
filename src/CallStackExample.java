@@ -3,8 +3,8 @@ public class CallStackExample {
     public static void main(String[] args) {
         int n = 1;
         n = addOne(n);
-        n = addTwo(n);
-        int sum = add(n, 5);
+        int m = addTwo(n);
+        int sum = add(n, m);
     }
 
     public static int addOne(int n) {
