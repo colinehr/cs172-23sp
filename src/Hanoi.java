@@ -17,7 +17,13 @@ public class Hanoi {
     }
 
     public static void main(String[] args) {
-
+        /*
+        Should output the following:
+            Move from peg A to peg C
+            Move from peg A to peg B
+            Move from peg C to peg B
+         */
+        move2('A', 'B', 'C');
     }
 
 }
