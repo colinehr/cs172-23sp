@@ -16,4 +16,13 @@ class RecursionTest {
         assertEquals(2, Recursion.fibonacci(2));
         assertEquals(13, Recursion.fibonacci(6));
     }
+
+    @Test
+    void choose() {
+        assertEquals(1, Recursion.choose(0, 0));
+        assertEquals(1, Recursion.choose(5, 0));
+        assertEquals(1, Recursion.choose(4, 4));
+        assertEquals(3, Recursion.choose(3, 2));
+        assertEquals(6, Recursion.choose(4, 2));
+    }
 }
