@@ -41,9 +41,17 @@ public class Recursion {
         return choose(n - 1, k - 1) + choose(n - 1, k);
     }
 
+    static int count7(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n % 10 == 7) {
+            return count7(n / 10) + 1;
+        }
+        return count7(n / 10);
+    }
+
     public static void main(String[] args) {
-        Stopwatch stopwatch = new Stopwatch();
-        StdOut.println(fibonacci(50));
-        StdOut.println(stopwatch.elapsedTime() + " seconds needed to calculate");
+        StdOut.println(count7(717));
     }
 }
