@@ -1,5 +1,10 @@
 public class Recursion {
 
+    /**
+     * Computes the factorial of an integer.
+     * @param n
+     * @return the factorial of n (n!)
+     */
     static long factorial(int n) {
         if (n == 0) {
             return 1;

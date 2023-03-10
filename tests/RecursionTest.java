@@ -25,4 +25,11 @@ class RecursionTest {
         assertEquals(3, Recursion.choose(3, 2));
         assertEquals(6, Recursion.choose(4, 2));
     }
+
+    @Test
+    void count7() {
+        assertEquals(2, Recursion.count7(717));
+        assertEquals(1, Recursion.count7(71));
+        assertEquals(0, Recursion.count7(615));
+    }
 }
