@@ -25,9 +25,18 @@ public class Main {
 
     public static void graphComplex(int n) {
         // generate n random complex numbers
-        // graph each of them using a scatter plot
+        Complex[] zs = new Complex[n];
         for (int i = 0; i < n; i++) {
-            // ...
+            double real = StdRandom.uniformDouble(-10, 10);
+            double imaginary = StdRandom.uniformDouble(-10, 10);
+            zs[i] = createComplex(real, imaginary);
+        }
+        StdDraw.setXscale(-10, 10);
+        StdDraw.setYscale(-10, 10);
+        StdDraw.line(-10, 0, 10, 0);
+        StdDraw.line(0, -10, 0, 10);
+        for (int i = 0; i < n; i++) {
+            StdDraw.filledCircle(zs[i].real, zs[i].imaginary, 0.1);
         }
     }
 
@@ -36,27 +45,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//        Complex z = new Complex();
-//        z.real = 1.0;
-//        z.imaginary = -2.0;
-
-        Complex z = createComplex(1.0, -2.0);
-        Complex w = createComplex(3, 4);
-        printComplex(addComplex(z, w));
-
-//        Car subaru = new Car();
-//        subaru.make = "Subaru";
-//        subaru.model = "Outback";
-//        subaru.year = 2002;
-//        subaru.mileage = 200000;
-//        subaru.condition = "Rugged";
-//        StdOut.println(carName(subaru));
-//
-//        Car toyota = new Car();
-//        toyota.make = "Toyota";
-//        toyota.model = "Prius";
-//        toyota.year = 2012;
-//        toyota.mileage = 80000;
-//        toyota.condition = "Fine";
+        graphComplex(100);
     }
 }
