@@ -10,11 +10,6 @@ public class Main {
         }
         StdDraw.setXscale(-10, 10);
         StdDraw.setYscale(-10, 10);
-        StdDraw.line(-10, 0, 10, 0);
-        StdDraw.line(0, -10, 0, 10);
-        for (int i = 0; i < n; i++) {
-            StdDraw.filledCircle(zs[i].real, zs[i].imaginary, 0.1);
-        }
     }
 
     public static String carName(Car car) {
