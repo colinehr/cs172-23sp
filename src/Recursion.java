@@ -1,37 +1,62 @@
 public class Recursion {
 
-    public static void curve(double x0, double y0,
-                             double x1, double y1,
-                             double var, double hurst) {
-        // set the decay
-        double s = Math.pow(2, 2 * hurst);
-        // draw a line if the two points are close
-        if (x1 - x0 < 0.01) {
-            StdDraw.line(x0, y0, x1, y1);
-            return;
+    /**
+     * Computes the factorial of an integer.
+     * @param n
+     * @return the factorial of n (n!)
+     */
+    static long factorial(int n) {
+        if (n == 0) {
+            return 1;
         }
-        // otherwise, break the line into two parts at the midpoint,
-        // and randomly shift the elevation of the midpoint
-        double xm = (x0 + x1) / 2;
-        double ym = (y0 + y1) / 2;
-        double delta = StdRandom.gaussian(0, Math.sqrt(var));
-        curve(x0, y0, xm, ym + delta, var/s, hurst);
-        curve(xm, ym + delta, x1, y1, var/s, hurst);
+        return n * factorial(n - 1);
+    }
+
+    static long fibonacci(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    static int add(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return add(a, b - 1) + 1;
+    }
+
+    static int multiply(int a, int b) {
+        if (b == 0) {
+            return 0;
+        }
+        if (b == 1) {
+            return a;
+        }
+        return multiply(a, b - 1) + a;
+    }
+
+    static int choose(int n, int k) {
+        if (n == 0) {
+            return 1;
+        }
+        if (k == 0 || k == n) {
+            return 1;
+        }
+        return choose(n - 1, k - 1) + choose(n - 1, k);
+    }
+
+    static int count7(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n % 10 == 7) {
+            return count7(n / 10) + 1;
+        }
+        return count7(n / 10);
     }
 
     public static void main(String[] args) {
-        while (true) {
-            // draw a curve
-            curve(0, 0.5, 1.0, 0.5, 0.01, 1);
-            // wait 3 seconds and reset
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            StdDraw.clear();
-        }
-
+        StdOut.println(count7(717));
     }
-
 }
