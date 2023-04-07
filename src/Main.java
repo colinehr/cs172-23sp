@@ -16,8 +16,4 @@ public class Main {
         return car.make + " " + car.model;
     }
 
-    public static void main(String[] args) {
-        Quad square = new Quad(5.0);
-        square.setSide(10.0);
-    }
 }

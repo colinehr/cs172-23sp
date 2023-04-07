@@ -1,22 +1,23 @@
 import java.util.Objects;
 
-// TODO make Quad immutable
-// TODO add x,y coordinates to Quad
-// TODO make Picture which can draw many Quads
-// TODO make Circle and add to Picture
-// TODO make Shape which is implemented by Circle and Quad
-// TODO spin out drawing into a Drawable interface
+public class Quad implements Shape {
 
-public class Quad {
+    private final double x;
+    private final double y;
+    private final double side;
 
-    private double side;
-    private double area;
-
-    public Quad() {}
-
-    public Quad(double length) {
+    public Quad(double x, double y, double length) {
+        this.x = x;
+        this.y = y;
         this.side = length;
-        this.area = length * length;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
     }
 
     /**
@@ -27,13 +28,8 @@ public class Quad {
         return side;
     }
 
-    /**
-     * Sets the value of the sides of the Quad
-     * @param side The length of the side
-     */
-    public void setSide(double side) {
-        this.side = side;
-        this.area = side * side;
+    public void draw() {
+        StdDraw.square(x, y, side / 2);
     }
 
     /**
@@ -41,7 +37,7 @@ public class Quad {
      * @return the area of the Quad
      */
     public double area() {
-        return this.area;
+        return this.side * this.side;
     }
 
     /**
@@ -74,8 +70,6 @@ public class Quad {
     }
 
     public static void main(String[] args) {
-        Quad square = new Quad();
-        StdOut.println(square.toString());
     }
 
 }
