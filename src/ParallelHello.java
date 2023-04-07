@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class ParallelHello extends Thread {
 
     int id;
@@ -32,7 +30,7 @@ public class ParallelHello extends Thread {
         }
         // wait for each thread to complete
         for (int i = 0; i < threads.length; i++) {
-            threads[i].join(3000);
+            threads[i].join();
         }
         StdOut.println("All done!");
     }
