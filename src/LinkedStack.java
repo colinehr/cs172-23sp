@@ -1,40 +1,41 @@
 import java.util.EmptyStackException;
 
-public class ArrayStack {
+public class LinkedStack {
 
-    private String[] array;
+    private Node first;
     private int size;
 
-    public ArrayStack() {
-        this.array = new String[100];
-        this.size = 0;
+    private class Node {
+        String item;
+        Node next;
     }
 
     public boolean isEmpty() {
-        return this.size == 0;
+        return this.first == null;
     }
 
     public String push(String item) {
-        this.array[size] = item;
-        this.size++;
+        Node fresh = new Node();
+        fresh.item = item;
+        fresh.next = this.first;
+        this.first = fresh;
         return item;
     }
 
     public String peek() {
         try {
-            return this.array[size - 1];
-        } catch (ArrayIndexOutOfBoundsException e) { throw new EmptyStackException(); }
+            return this.first.item;
+        } catch (NullPointerException e) { throw new EmptyStackException(); }
     }
 
     public String pop() {
         String top = this.peek();
-        this.array[size - 1] = null;
-        this.size--;
+        this.first = first.next;
         return top;
     }
 
     public static void main(String[] args) {
-        ArrayStack stack = new ArrayStack();
+        LinkedStack stack = new LinkedStack();
         stack.push("abc");
         stack.push("def");
         StdOut.println(stack.pop()); // should be "def"
