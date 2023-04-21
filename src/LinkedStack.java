@@ -1,12 +1,12 @@
 import java.util.EmptyStackException;
+import java.util.Iterator;
 
-public class LinkedStack {
+public class LinkedStack<E> implements Stack<E> {
 
     private Node first;
-    private int size;
 
     private class Node {
-        String item;
+        E item;
         Node next;
     }
 
@@ -14,7 +14,7 @@ public class LinkedStack {
         return this.first == null;
     }
 
-    public String push(String item) {
+    public E push(E item) {
         Node fresh = new Node();
         fresh.item = item;
         fresh.next = this.first;
@@ -22,25 +22,47 @@ public class LinkedStack {
         return item;
     }
 
-    public String peek() {
+    public E peek() {
         try {
             return this.first.item;
         } catch (NullPointerException e) { throw new EmptyStackException(); }
     }
 
-    public String pop() {
-        String top = this.peek();
+    public E pop() {
+        E top = this.peek();
         this.first = first.next;
         return top;
     }
 
+    private class LinkedStackIterator implements Iterator<E> {
+
+        Node current = first;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            E item = this.current.item;
+            this.current = this.current.next;
+            return item;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedStackIterator();
+    }
+
     public static void main(String[] args) {
-        LinkedStack stack = new LinkedStack();
-        stack.push("abc");
-        stack.push("def");
-        StdOut.println(stack.pop()); // should be "def"
-        StdOut.println(stack.pop()); // should be "abc"
-        StdOut.println(stack.pop()); // bad!
+        LinkedStack<Integer> stack = new LinkedStack<Integer>();
+        stack.push(1);
+        stack.push(2);
+        for (int n : stack) {
+            StdOut.println(n);
+        }
     }
 
 }
