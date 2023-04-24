@@ -1,7 +1,7 @@
 import java.util.EmptyStackException;
 import java.util.Iterator;
 
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayStack<E> implements Iterable<E> {
 
     private E[] array;
     private int size;
@@ -68,7 +68,6 @@ public class ArrayStack<E> implements Stack<E> {
      *
      * @return the iterator of this stack.
      */
-    @Override
     public Iterator<E> iterator() {
         return new ArrayStack.ArrayStackIterator();
     }

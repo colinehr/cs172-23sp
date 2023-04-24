@@ -1,7 +1,7 @@
 import java.util.EmptyStackException;
 import java.util.Iterator;
 
-public class LinkedStack<E> implements Stack<E> {
+public class LinkedStack<E> implements Iterable<E> {
 
     private Node first;
 
